@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ReviewDemo</string>
+    <string name="handlerDesc">Handler操作：
+ * Handler中涉及到的对象：handler,Message,MessageQueue,looper，MainThread,WorkThread,
+ * handler 用于处理消息，负责更新UI
+ * Message:负责携带信息，参数有what,arg1,arg2,obj
+ * MessageQueue：消息队列，用于接受handler发送来的消息，将接受的msg按照队列的方式进行排列,
+ * looper：用于将消息队列中的消息msg传给handler的handleMessage方法
+ * WorkThread:用于执行耗时操作，此线程涉及操作的对象有：Message,handler.sendMessage(msg)，new Thread(new Runnable()),new Thread().start();
+ * MainThread:主线程更新UI
+ * 使用步骤：
+ * 1:初始化handler对象（内部类，子类）
+ * 2:启用子线程进行耗时操作，new Thread（），
+ * 3:耗时操作结束，初始化Message，并将业务数据交由Message携带
+ * 4:Message初始化完成，则交由handler对象向主线程（UI线程）发送消息
+ * 5:handler的handlMessage（）方法更新UI
+ </string>
+</resources>

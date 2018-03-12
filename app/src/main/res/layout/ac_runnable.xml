@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_runnable_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="常规方式" />
+
+        <Button
+            android:id="@+id/btn_runnable_innfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="匿名类" />
+
+        <Button
+            android:id="@+id/btn_runnable_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="两个线程实现两个相同的耗时任务" />
+
+        <Button
+            android:id="@+id/btn_runnable_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="两个线程实现两个不同的耗时任务" />
+
+        <Button
+            android:id="@+id/btn_runnable_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="两个线程实现一个耗时任务" />
+
+        <Button
+            android:id="@+id/btn_runnable_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="取消" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_example_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_example_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>
