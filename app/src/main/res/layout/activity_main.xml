@@ -11,13 +11,27 @@
         android:id="@+id/btn_handler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="Handler执行" />
+        android:text="Handler执行"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_runnable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="Runnable执行" />
+        android:text="Runnable执行"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_asynctask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AsyncTask执行"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_handlerthread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HandlerThread执行"
+        android:textAllCaps="false" />
 </LinearLayout>

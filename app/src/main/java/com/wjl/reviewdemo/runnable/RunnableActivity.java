@@ -23,7 +23,7 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
     Button btn_runnable_normal, btn_runnable_innfer, btn_runnable_1, btn_runnable_2, btn_runnable_3, btn_runnable_cancle;
     TextView tv_example_desc, tv_example_result;
 
-    List<Thread> list=new ArrayList<>();
+    List<Thread> list = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +35,6 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
         btn_runnable_1 = findViewById(R.id.btn_runnable_1);
         btn_runnable_2 = findViewById(R.id.btn_runnable_2);
         btn_runnable_3 = findViewById(R.id.btn_runnable_3);
-        btn_runnable_cancle = findViewById(R.id.btn_runnable_cancle);
         tv_example_desc = findViewById(R.id.tv_example_desc);
         tv_example_result = findViewById(R.id.tv_example_result);
 
@@ -45,7 +44,6 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
         btn_runnable_2.setOnClickListener(this);
         btn_runnable_3.setOnClickListener(this);
         btn_runnable_normal.setOnClickListener(this);
-        btn_runnable_cancle.setOnClickListener(this);
     }
 
     @Override
@@ -65,8 +63,6 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_runnable_3:
                 example_three();
-                break;
-            case R.id.btn_runnable_cancle:
                 break;
             default:
                 break;
@@ -143,7 +139,10 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
             }
         };
 
-        new Thread(runnable).start();
+        Thread thread = new Thread(runnable);
+        list.add(thread);
+
+        thread.start();
     }
 
 
@@ -153,6 +152,7 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
     private void createNormal() {
         tv_example_desc.setText("常规写法");
         Thread thread = new Thread(new MyRunnable());
+        list.add(thread);
         thread.start();
     }
 

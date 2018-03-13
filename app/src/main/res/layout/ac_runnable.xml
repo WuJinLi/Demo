@@ -41,11 +41,6 @@
             android:layout_height="wrap_content"
             android:text="两个线程实现一个耗时任务" />
 
-        <Button
-            android:id="@+id/btn_runnable_cancle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="取消" />
     </LinearLayout>
 
 

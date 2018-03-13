@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.wjl.reviewdemo.asynctask.AsyncTaskActivity;
 import com.wjl.reviewdemo.handler.HandlerActivity;
+import com.wjl.reviewdemo.handlerthread.HandlerThreadActivity;
 import com.wjl.reviewdemo.runnable.RunnableActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +33,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, RunnableActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_asynctask).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AsyncTaskActivity.class));
+            }
+        });
+
+
+        findViewById(R.id.btn_handlerthread).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, HandlerThreadActivity.class));
             }
         });
     }
