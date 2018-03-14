@@ -18,18 +18,17 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * author: WuJinLi
  * time  : 18/3/13
- * desc  :
+ * desc  :HandlerThread使用
  */
 
 public class HandlerThreadActivity extends AppCompatActivity implements View.OnClickListener {
     Button btn_download;
     ImageView iv_photo;
-    Handler workHandler,mainHandler;
+    Handler workHandler, mainHandler;
     static final String IMAGEURL = "http://f.hiphotos.baidu.com/image/pic/item/c75c10385343fbf2f7da8133bc7eca8065388f2f.jpg";
     HandlerThread handlerThread;
     Bitmap bitmap;
@@ -44,12 +43,13 @@ public class HandlerThreadActivity extends AppCompatActivity implements View.OnC
 
         handlerThread = new HandlerThread("downloadimage");
 
-        mainHandler=new Handler();
+        mainHandler = new Handler();
 
 
         handlerThread.start();
 
 
+        btn_download.setOnClickListener(this);
         workHandler = new Handler(handlerThread.getLooper()) {
             @Override
             public void handleMessage(Message msg) {
@@ -93,3 +93,31 @@ public class HandlerThreadActivity extends AppCompatActivity implements View.OnC
         }
     }
 }
+
+/**
+ * HandlerThread是一个android已经封装好的异步类,
+ * 内部原理：Thread类＋Handler类机制：
+ * 1.通过继承Thread类创建一个自带looper的工作线程
+ * 2.通过封装的Handler来实现不同线程的信息通信
+ * <p>
+ * 使用步骤：
+ * 1.创建HandlerThread对象
+ * 传入参数 = 线程名字，作用 = 标记该线程
+ * HandlerThread handlerThread=new HandlerThread("*******");
+ * 2.启用HandlerThread
+ * handlerThread.start();
+ * 3.创建工作线程Handler,执行异步操作
+ * Handler workHandler=new Handler(handlerThread.getLooper()){
+ * handleMessage(){
+ * 处理耗时操作
+ * }
+ * }
+ * <p>
+ * 4.线程也启动就绪了，则有消息通知去执行耗时操作，则涉及到发送信息的操作，
+ * Message msg=workHandler.obtain();这里发消息的必须是工作线程的handler
+ * msg.what,obj,arg1,arg2等参数的初始化（择需使用）
+ * workHandler.setMessage(msg)
+ * <p>
+ * 5.结束线程时候，要停止线程消息的循环
+ * handlerThread.quit()
+ */
