@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wjl.reviewdemo.R;
+import com.wjl.reviewdemo.UrlManager;
 
 
 /**
@@ -20,7 +21,7 @@ import com.wjl.reviewdemo.R;
  */
 
 public class AsyncTaskActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btn_loading, btn_cancle, btn_download;
+    Button btn_loading, btn_cancle, btn_download, btn_web;
     ProgressBar pb_progress;
     TextView tv_desc;
     MyTask myTask;
@@ -38,6 +39,7 @@ public class AsyncTaskActivity extends AppCompatActivity implements View.OnClick
 
         btn_loading = findViewById(R.id.btn_loading);
         btn_cancle = findViewById(R.id.btn_cancle);
+        btn_web = findViewById(R.id.btn_web);
         btn_download = findViewById(R.id.btn_download);
         pb_progress = findViewById(R.id.pb_progress);
         tv_desc = findViewById(R.id.tv_desc);
@@ -47,6 +49,7 @@ public class AsyncTaskActivity extends AppCompatActivity implements View.OnClick
         btn_loading.setOnClickListener(this);
         btn_cancle.setOnClickListener(this);
         btn_download.setOnClickListener(this);
+        btn_web.setOnClickListener(this);
 
     }
 
@@ -64,6 +67,10 @@ public class AsyncTaskActivity extends AppCompatActivity implements View.OnClick
                 iv_img.setImageBitmap(null);
                 imageViewAsyncTask = new ImageViewAsyncTask(iv_img);
                 imageViewAsyncTask.execute(IMAGEURL);
+                break;
+
+            case R.id.btn_web:
+                UrlManager.startAc(AsyncTaskActivity.this, UrlManager.ASYNCTASK_URL);
                 break;
             default:
                 break;
@@ -149,6 +156,6 @@ public class AsyncTaskActivity extends AppCompatActivity implements View.OnClick
  * 1.AsyncTask不与任何控件的生命周期绑定，所以在activity或者fragment中使用，在onDestory()方法中调用cancle(boolean)
  * 2.在使用AsyncTask是需要将其声明为静态的内部类，避免activity销毁时，AsyncTask持有activity的引用造成的内存泄漏
  * 3.在使用时，会出现 java.lang.IllegalStateException: Cannot execute task: the task has already been executed (a task can be executed only once)的异常信息
- *   解决方法：每一次执行异步操作的时候，都必须去重新初始化MyTask对象
+ * 解决方法：每一次执行异步操作的时候，都必须去重新初始化MyTask对象
  * 4.在涉及activity横竖屏切换过程，容易造成线程丢失或者线程结果丢失的现象，避免这种线程，需要在activity新状态的对应方法中重新启用任务线程
  */

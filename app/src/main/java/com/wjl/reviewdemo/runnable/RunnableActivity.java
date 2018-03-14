@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.wjl.reviewdemo.R;
+import com.wjl.reviewdemo.UrlManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 
 public class RunnableActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btn_runnable_normal, btn_runnable_innfer, btn_runnable_1, btn_runnable_2, btn_runnable_3, btn_runnable_cancle;
+    Button btn_runnable_normal, btn_runnable_innfer, btn_runnable_1, btn_runnable_2, btn_runnable_3, btn_web;
     TextView tv_example_desc, tv_example_result;
 
     List<Thread> list = new ArrayList<>();
@@ -35,6 +36,7 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
         btn_runnable_1 = findViewById(R.id.btn_runnable_1);
         btn_runnable_2 = findViewById(R.id.btn_runnable_2);
         btn_runnable_3 = findViewById(R.id.btn_runnable_3);
+        btn_web = findViewById(R.id.btn_web);
         tv_example_desc = findViewById(R.id.tv_example_desc);
         tv_example_result = findViewById(R.id.tv_example_result);
 
@@ -44,6 +46,7 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
         btn_runnable_2.setOnClickListener(this);
         btn_runnable_3.setOnClickListener(this);
         btn_runnable_normal.setOnClickListener(this);
+        btn_web.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +66,9 @@ public class RunnableActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_runnable_3:
                 example_three();
+                break;
+            case R.id.btn_web:
+                UrlManager.startAc(RunnableActivity.this, UrlManager.RUNNABLE_URL);
                 break;
             default:
                 break;

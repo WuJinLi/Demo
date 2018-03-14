@@ -1,5 +1,6 @@
 package com.wjl.reviewdemo.handlerthread;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.wjl.reviewdemo.R;
+import com.wjl.reviewdemo.UrlManager;
+import com.wjl.reviewdemo.handler.HandlerActivity;
+import com.wjl.reviewdemo.web.WebDetailActivity;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -26,7 +30,7 @@ import java.net.URL;
  */
 
 public class HandlerThreadActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btn_download;
+    Button btn_download, btn_web;
     ImageView iv_photo;
     Handler workHandler, mainHandler;
     static final String IMAGEURL = "http://f.hiphotos.baidu.com/image/pic/item/c75c10385343fbf2f7da8133bc7eca8065388f2f.jpg";
@@ -39,6 +43,7 @@ public class HandlerThreadActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.ac_handlerthread);
 
         btn_download = findViewById(R.id.btn_download);
+        btn_web = findViewById(R.id.btn_web);
         iv_photo = findViewById(R.id.iv_photo);
 
         handlerThread = new HandlerThread("downloadimage");
@@ -50,6 +55,7 @@ public class HandlerThreadActivity extends AppCompatActivity implements View.OnC
 
 
         btn_download.setOnClickListener(this);
+        btn_web.setOnClickListener(this);
         workHandler = new Handler(handlerThread.getLooper()) {
             @Override
             public void handleMessage(Message msg) {
@@ -77,6 +83,8 @@ public class HandlerThreadActivity extends AppCompatActivity implements View.OnC
                 }
             }
         };
+
+
     }
 
     @Override
@@ -87,6 +95,9 @@ public class HandlerThreadActivity extends AppCompatActivity implements View.OnC
                 Message msg = workHandler.obtainMessage();
                 msg.what = 1;
                 workHandler.sendMessage(msg);
+                break;
+            case R.id.btn_web:
+                UrlManager.startAc(HandlerThreadActivity.this, UrlManager.HANDLER_THREAD_URL);
                 break;
             default:
                 break;

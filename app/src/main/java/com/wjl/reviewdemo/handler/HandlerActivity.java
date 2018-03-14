@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.wjl.reviewdemo.R;
+import com.wjl.reviewdemo.UrlManager;
 
 /**
  * author: WuJinLi
@@ -17,7 +18,7 @@ import com.wjl.reviewdemo.R;
  */
 
 public class HandlerActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btn_style_1, btn_style_2, btn_style_3;
+    Button btn_style_1, btn_style_2, btn_style_3, btn_web;
 
     TextView tv_show;
 
@@ -42,11 +43,13 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
         btn_style_1 = findViewById(R.id.btn_style_1);
         btn_style_2 = findViewById(R.id.btn_style_2);
         btn_style_3 = findViewById(R.id.btn_style_3);
+        btn_web = findViewById(R.id.btn_web);
 
         tv_show = findViewById(R.id.tv_show);
         btn_style_1.setOnClickListener(this);
         btn_style_2.setOnClickListener(this);
         btn_style_3.setOnClickListener(this);
+        btn_web.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +66,10 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.btn_style_3:
                 style_3();
+                break;
+
+            case R.id.btn_web:
+                UrlManager.startAc(HandlerActivity.this, UrlManager.HANDLER_URL);
                 break;
             default:
                 break;
