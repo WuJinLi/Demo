@@ -161,8 +161,7 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
  * looper：用于将消息队列中的消息msg传给handler的handleMessage方法
  * WorkThread:用于执行耗时操作，此线程涉及操作的对象有：Message,handler.sendMessage(msg)，new Thread(new Runnable()),new Thread().start();
  * MainThread:主线程更新UI
- * <p>
- * <p>
+ * ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
  * 使用步骤：
  * 1:初始化handler对象（内部类，子类）
  * 2:启用子线程进行耗时操作，new Thread（），
