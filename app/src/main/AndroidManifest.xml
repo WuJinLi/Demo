@@ -19,22 +19,25 @@
         </activity>
 
         <activity
-            android:name=".handler.HandlerActivity"
+            android:name=".multithreading.handler.HandlerActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".runnable.RunnableActivity"
+            android:name=".multithreading.runnable.RunnableActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".asynctask.AsyncTaskActivity"
+            android:name=".multithreading.asynctask.AsyncTaskActivity"
             android:screenOrientation="portrait" />
 
 
-        <activity android:name=".handlerthread.HandlerThreadActivity"
+        <activity android:name=".multithreading.handlerthread.HandlerThreadActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".web.WebDetailActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".multithreading.MultiThreadingActivity"
             android:screenOrientation="portrait"/>
 
     </application>

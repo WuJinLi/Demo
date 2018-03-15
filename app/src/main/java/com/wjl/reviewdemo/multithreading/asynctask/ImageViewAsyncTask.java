@@ -1,4 +1,4 @@
-package com.wjl.reviewdemo.asynctask;
+package com.wjl.reviewdemo.multithreading.asynctask;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

@@ -25,4 +25,8 @@ public class UrlManager {
         intent.putExtra("WEB_URL", url);
         context.startActivity(intent);
     }
+    public static void startAc(Context context,Class<?> cls) {
+        Intent intent = new Intent(context, cls);
+        context.startActivity(intent);
+    }
 }

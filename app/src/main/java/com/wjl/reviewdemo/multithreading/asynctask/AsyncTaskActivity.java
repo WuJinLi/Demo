@@ -1,4 +1,4 @@
-package com.wjl.reviewdemo.asynctask;
+package com.wjl.reviewdemo.multithreading.asynctask;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -65,7 +65,7 @@ public class AsyncTaskActivity extends BaseActivity implements View.OnClickListe
 
             case R.id.btn_download:
                 iv_img.setImageBitmap(null);
-                imageViewAsyncTask = new ImageViewAsyncTask(AsyncTaskActivity.this,iv_img);
+                imageViewAsyncTask = new ImageViewAsyncTask(AsyncTaskActivity.this, iv_img);
                 imageViewAsyncTask.execute(IMAGEURL);
                 break;
 

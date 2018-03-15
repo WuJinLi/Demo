@@ -1,4 +1,4 @@
-package com.wjl.reviewdemo.handlerthread;
+package com.wjl.reviewdemo.multithreading.handlerthread;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,8 +15,6 @@ import android.widget.ImageView;
 import com.wjl.reviewdemo.R;
 import com.wjl.reviewdemo.UrlManager;
 import com.wjl.reviewdemo.base.BaseActivity;
-import com.wjl.reviewdemo.handler.HandlerActivity;
-import com.wjl.reviewdemo.web.WebDetailActivity;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
