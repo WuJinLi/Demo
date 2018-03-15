@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.wjl.reviewdemo.R;
 import com.wjl.reviewdemo.UrlManager;
+import com.wjl.reviewdemo.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
  * desc  :
  */
 
-public class RunnableActivity extends AppCompatActivity implements View.OnClickListener {
+public class RunnableActivity extends BaseActivity implements View.OnClickListener {
     Button btn_runnable_normal, btn_runnable_innfer, btn_runnable_1, btn_runnable_2, btn_runnable_3, btn_web;
     TextView tv_example_desc, tv_example_result;
 

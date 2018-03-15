@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
+import com.wjl.reviewdemo.base.BaseActivity;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -19,14 +21,16 @@ import java.net.URL;
 
 public class ImageViewAsyncTask extends AsyncTask<String, Void, Bitmap> {
     private ImageView imageView;
+    private BaseActivity activity;
 
-    public ImageViewAsyncTask(ImageView imageView) {
+    public ImageViewAsyncTask(BaseActivity activity,ImageView imageView) {
         this.imageView = imageView;
+        this.activity=activity;
     }
 
     @Override
     protected void onPreExecute() {
-        super.onPreExecute();
+        activity.showLoading();
     }
 
     @Override
@@ -48,6 +52,7 @@ public class ImageViewAsyncTask extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
+        activity.cancleLoading();
         imageView.setImageBitmap(bitmap);
     }
 

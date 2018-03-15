@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import com.wjl.reviewdemo.R;
 import com.wjl.reviewdemo.UrlManager;
+import com.wjl.reviewdemo.base.BaseActivity;
 import com.wjl.reviewdemo.handler.HandlerActivity;
 import com.wjl.reviewdemo.web.WebDetailActivity;
 
@@ -29,7 +30,7 @@ import java.net.URL;
  * desc  :HandlerThread使用
  */
 
-public class HandlerThreadActivity extends AppCompatActivity implements View.OnClickListener {
+public class HandlerThreadActivity extends BaseActivity implements View.OnClickListener {
     Button btn_download, btn_web;
     ImageView iv_photo;
     Handler workHandler, mainHandler;
@@ -70,6 +71,7 @@ public class HandlerThreadActivity extends AppCompatActivity implements View.OnC
                             mainHandler.post(new Runnable() {
                                 @Override
                                 public void run() {
+                                    cancleLoading();
                                     iv_photo.setImageBitmap(bitmap);
                                 }
                             });
@@ -91,6 +93,7 @@ public class HandlerThreadActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_download:
+                showLoading();
                 iv_photo.setImageBitmap(null);
                 Message msg = workHandler.obtainMessage();
                 msg.what = 1;

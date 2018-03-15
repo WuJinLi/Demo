@@ -3,7 +3,6 @@ package com.wjl.reviewdemo.asynctask;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 import com.wjl.reviewdemo.R;
 import com.wjl.reviewdemo.UrlManager;
+import com.wjl.reviewdemo.base.BaseActivity;
 
 
 /**
@@ -20,7 +20,7 @@ import com.wjl.reviewdemo.UrlManager;
  * desc  :AsyncTask使用
  */
 
-public class AsyncTaskActivity extends AppCompatActivity implements View.OnClickListener {
+public class AsyncTaskActivity extends BaseActivity implements View.OnClickListener {
     Button btn_loading, btn_cancle, btn_download, btn_web;
     ProgressBar pb_progress;
     TextView tv_desc;
@@ -65,7 +65,7 @@ public class AsyncTaskActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.btn_download:
                 iv_img.setImageBitmap(null);
-                imageViewAsyncTask = new ImageViewAsyncTask(iv_img);
+                imageViewAsyncTask = new ImageViewAsyncTask(AsyncTaskActivity.this,iv_img);
                 imageViewAsyncTask.execute(IMAGEURL);
                 break;
 
@@ -82,7 +82,8 @@ public class AsyncTaskActivity extends AppCompatActivity implements View.OnClick
 
         @Override
         protected void onPreExecute() {
-            tv_desc.setText("LOADING.......");
+//            tv_desc.setText("LOADING.......");
+            showLoading();
         }
 
         @Override
@@ -111,7 +112,8 @@ public class AsyncTaskActivity extends AppCompatActivity implements View.OnClick
 
         @Override
         protected void onPostExecute(String s) {
-            tv_desc.setText("加载完毕.....");
+            cancleLoading();
+//            tv_desc.setText("加载完毕.....");
         }
 
         @Override

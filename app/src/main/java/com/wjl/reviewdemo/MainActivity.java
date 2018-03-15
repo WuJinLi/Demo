@@ -50,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, HandlerThreadActivity.class));
             }
         });
+
+        findViewById(R.id.btn_threadpool).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UrlManager.startAc(MainActivity.this, UrlManager.THREAD_POOL);
+            }
+        });
     }
 }
 

@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.wjl.reviewdemo.R;
+import com.wjl.reviewdemo.base.BaseActivity;
 
 /**
  * author: WuJinLi
@@ -19,7 +20,7 @@ import com.wjl.reviewdemo.R;
  * desc  :
  */
 
-public class WebDetailActivity extends AppCompatActivity {
+public class WebDetailActivity extends BaseActivity {
     WebView wv_webview;
 
     String url="https://www.jianshu.com/";
@@ -52,11 +53,13 @@ public class WebDetailActivity extends AppCompatActivity {
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                showLoading();
             }
 
 
             @Override
             public void onPageFinished(WebView view, String url) {
+                cancleLoading();
             }
         });
 

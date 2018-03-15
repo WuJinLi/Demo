@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.wjl.reviewdemo.R;
 import com.wjl.reviewdemo.UrlManager;
+import com.wjl.reviewdemo.base.BaseActivity;
 
 /**
  * author: WuJinLi
@@ -17,7 +18,7 @@ import com.wjl.reviewdemo.UrlManager;
  * desc  :
  */
 
-public class HandlerActivity extends AppCompatActivity implements View.OnClickListener {
+public class HandlerActivity extends BaseActivity implements View.OnClickListener {
     Button btn_style_1, btn_style_2, btn_style_3, btn_web;
 
     TextView tv_show;
@@ -28,6 +29,7 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
             super.handleMessage(msg);
             switch (msg.what) {
                 case 2:
+                    cancleLoading();
                     tv_show.setText(msg.obj.toString());
                     break;
                 default:
@@ -78,6 +80,7 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
 
 
     public void style_1() {
+        showLoading();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -99,6 +102,7 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
 
 
     public void style_2() {
+        showLoading();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -111,6 +115,7 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
+                        cancleLoading();
                         tv_show.setText("Handler.post实现");
 //                        tv_show.setText("2");
                     }
@@ -122,6 +127,7 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
 
 
     public void style_3() {
+        showLoading();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -150,6 +156,7 @@ public class HandlerActivity extends AppCompatActivity implements View.OnClickLi
             if (msg != null) {
                 switch (msg.what) {
                     case 1:
+                        cancleLoading();
                         tv_show.setText(msg.obj.toString());
                         break;
                 }
