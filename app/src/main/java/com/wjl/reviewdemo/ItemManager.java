@@ -57,6 +57,7 @@ public class ItemManager {
         List<NavigateModel> list = new ArrayList<>();
 
         list.add(new NavigateModel("多线程", 1, R.mipmap.ic_launcher));
+        list.add(new NavigateModel("广播", 2, R.mipmap.ic_launcher));
         return list;
     }
 
