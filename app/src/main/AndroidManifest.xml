@@ -74,6 +74,9 @@
         <activity
             android:name=".storage.FileSaveActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".storage.LoginSuccessActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

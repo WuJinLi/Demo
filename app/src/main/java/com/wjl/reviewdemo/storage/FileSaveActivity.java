@@ -173,3 +173,14 @@ public class FileSaveActivity extends BaseActivity implements View.OnClickListen
         }
     }
 }
+
+/**
+ * 文件存储是android数据存储的一种方式，比较适合存储一些简单的嗯本数据或者二进制
+ * 操作文件涉及到读写两种操作
+ * 写文件：
+ *       操作文件使用到FileoutputStream , BufferWriter   openFileOutputStream(),
+ * 读文件：
+ *       操作文件使用到FileInputStream  ,BufferReader, openFileInputStream
+ * <p>
+ * 在读写文件是注意流的关闭
+ */
