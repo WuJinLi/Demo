@@ -4,7 +4,9 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,19 +35,45 @@
             android:screenOrientation="portrait" />
 
 
-        <activity android:name=".multithreading.handlerthread.HandlerThreadActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".multithreading.handlerthread.HandlerThreadActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".web.WebDetailActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".web.WebDetailActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".multithreading.MultiThreadingActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".multithreading.MultiThreadingActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".broadcast.BroadcastActivity"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".broadcast.BroadcastActivity"
+            android:screenOrientation="portrait" />
 
+        <receiver
+            android:name=".broadcast.NetChangedReceicer"
+            android:enabled="true">
+            <intent-filter>
+                <!--<action android:name="android.NET.conn.CONNECTIVITY_CHANGE" />-->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+
+        <activity
+            android:name=".storage.StorageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".storage.DataBaseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".storage.SharedPrefencesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".storage.FileSaveActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

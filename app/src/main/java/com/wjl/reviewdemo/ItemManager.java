@@ -24,6 +24,8 @@ public class ItemManager {
             return getMainData();
         } else if (ConstantManager.MULTITHREADINGACTIVITYTAG.equals(flag)) {
             return getMultiThreadingData();
+        } else if (ConstantManager.STORAGEACTIVITYTAG.equals(flag)) {
+            return getStorageData();
         }
         return null;
     }
@@ -58,6 +60,7 @@ public class ItemManager {
 
         list.add(new NavigateModel("多线程", 1, R.mipmap.ic_launcher));
         list.add(new NavigateModel("广播", 2, R.mipmap.ic_launcher));
+        list.add(new NavigateModel("持久化存储", 3, R.mipmap.ic_launcher));
         return list;
     }
 
@@ -70,6 +73,17 @@ public class ItemManager {
         list.add(new NavigateModel("AsyncTask执行", 3, R.mipmap.ic_launcher));
         list.add(new NavigateModel("HandlerThread执行", 4, R.mipmap.ic_launcher));
         list.add(new NavigateModel("ThreadPool执行", 5, R.mipmap.ic_launcher));
+        return list;
+    }
+
+
+    public static List<NavigateModel> getStorageData() {
+        List<NavigateModel> list = new ArrayList<>();
+
+        list.add(new NavigateModel("FileSave", 1, R.mipmap.ic_launcher));
+        list.add(new NavigateModel("SharedPrefrecences", 2, R.mipmap.ic_launcher));
+        list.add(new NavigateModel("数据库", 3, R.mipmap.ic_launcher));
+
         return list;
     }
 }

@@ -16,4 +16,6 @@ public class ConstantManager {
     public static final String ASYNCTASKACTIVITYTAG="AsyncTaskActivity";
     public static final String HANDLERTHREADACTIVITYTAG="HandlerThreadActivity";
     public static final String WEBDETAILACTIVITYTAG="WebDetailActivity";
+    public static final String STORAGEACTIVITYTAG="StorageActivity";
+
 }

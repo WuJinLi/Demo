@@ -8,6 +8,7 @@ import com.wjl.reviewdemo.base.BaseActivity;
 import com.wjl.reviewdemo.broadcast.BroadcastActivity;
 import com.wjl.reviewdemo.model.NavigateModel;
 import com.wjl.reviewdemo.multithreading.MultiThreadingActivity;
+import com.wjl.reviewdemo.storage.StorageActivity;
 
 
 public class MainActivity extends BaseActivity {
@@ -34,6 +35,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case 2:
                 UrlManager.startAc(this, BroadcastActivity.class);
+                break;
+            case 3:
+                UrlManager.startAc(this, StorageActivity.class);
                 break;
             default:
                 break;

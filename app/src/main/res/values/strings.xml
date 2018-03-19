@@ -15,4 +15,9 @@
  * 4:Message初始化完成，则交由handler对象向主线程（UI线程）发送消息
  * 5:handler的handlMessage（）方法更新UI
  </string>
+
+
+    <string name="edit_hint">请输入内容</string>
+    <string name="btn_save">savefiles</string>
+    <string name="btn_read">readfiles</string>
 </resources>

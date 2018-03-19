@@ -23,16 +23,20 @@ import com.wjl.reviewdemo.base.BaseActivity;
 
 public class BroadcastActivity extends BaseActivity implements View.OnClickListener {
     NetWorkChangedReceiver netWorkChangedReceiver;
-    Button btn_net_work_status;
+    Button btn_net_work_status,btn_offline;
+    NetChangedReceicer netChangedReceicer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_broadcast);
+//        initBroadcast();
         btn_net_work_status = findViewById(R.id.btn_net_work_status);
+        btn_offline = findViewById(R.id.btn_offline);
 
 
         btn_net_work_status.setOnClickListener(this);
+        btn_offline.setOnClickListener(this);
 
     }
 
@@ -40,18 +44,26 @@ public class BroadcastActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_net_work_status:
-                initBroadcast();
+//                initBroadcast();
                 break;
-
+            case R.id.btn_offline:
+                offline();
+                break;
             default:
                 break;
         }
+    }
+
+    private void offline() {
+        Intent intent=new Intent("com.wjl.FORCE_OFFLINE");
+        sendBroadcast(intent);
     }
 
     private void initBroadcast() {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         netWorkChangedReceiver = new NetWorkChangedReceiver();
+//        netChangedReceicer=new NetChangedReceicer();
 
         registerReceiver(netWorkChangedReceiver, intentFilter);
     }
@@ -75,7 +87,11 @@ public class BroadcastActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     protected void onDestroy() {
-        unregisterReceiver(netWorkChangedReceiver);
+        if (netWorkChangedReceiver!=null){
+            unregisterReceiver(netWorkChangedReceiver);
+            netChangedReceicer=null;
+        }
+
         super.onDestroy();
     }
 }

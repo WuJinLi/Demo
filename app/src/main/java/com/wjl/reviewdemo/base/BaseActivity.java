@@ -1,11 +1,15 @@
 package com.wjl.reviewdemo.base;
 
 import android.app.Dialog;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.wjl.reviewdemo.R;
+import com.wjl.reviewdemo.broadcast.ForceOfflineReceiver;
 
 /**
  * author: WuJinLi
@@ -15,6 +19,33 @@ import com.wjl.reviewdemo.R;
 
 public class BaseActivity extends AppCompatActivity implements IBaseView {
     public Dialog progressDialog;
+    ForceOfflineReceiver receiver;
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityCollector.AddActivity(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        receiver = new ForceOfflineReceiver();
+
+        IntentFilter intentFilter = new IntentFilter("com.wjl.FORCE_OFFLINE");
+        registerReceiver(receiver, intentFilter);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (receiver!=null){
+            unregisterReceiver(receiver);
+            receiver=null;
+        }
+    }
 
     @Override
     public void showLoading() {
@@ -63,6 +94,7 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
             progressDialog.dismiss();
             progressDialog = null;
         }
+        ActivityCollector.removeActivity(this);
         super.onDestroy();
     }
 }
