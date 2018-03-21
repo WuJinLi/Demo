@@ -1,6 +1,7 @@
 package com.wjl.reviewdemo.storage;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +9,16 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.wjl.reviewdemo.R;
 import com.wjl.reviewdemo.base.BaseActivity;
+import com.wjl.reviewdemo.storage.adapter.DataAdapter;
+import com.wjl.reviewdemo.storage.model.Book;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * author: WuJinLi
@@ -31,6 +38,9 @@ public class DataBaseActivity extends BaseActivity implements View.OnClickListen
     String author, name;
     int pages;
     float price;
+    List<Book> list = new ArrayList<>();
+    DataAdapter adapter;
+    ListView lv_data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,12 +57,18 @@ public class DataBaseActivity extends BaseActivity implements View.OnClickListen
         et_price = findViewById(R.id.et_price);
         et_pages = findViewById(R.id.et_pages);
         et_name = findViewById(R.id.et_name);
+        lv_data = findViewById(R.id.lv_data);
 
         btn_creat_db.setOnClickListener(this);
         btn_add.setOnClickListener(this);
         btn_update.setOnClickListener(this);
         btn_select.setOnClickListener(this);
         btn_delete.setOnClickListener(this);
+
+        adapter = new DataAdapter(this, list);
+        lv_data.setAdapter(adapter);
+
+
     }
 
     @Override
@@ -68,8 +84,27 @@ public class DataBaseActivity extends BaseActivity implements View.OnClickListen
                 updateData();
                 break;
             case R.id.btn_select:
+                showLoading();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (list!=null||list.size()!=0){
+                            list.clear();
+                        }
+                        list = selecteAllData();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                cancleLoading();
+                                adapter.setList(list);
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
+                    }
+                }).start();
                 break;
             case R.id.btn_delete:
+                deleteData();
                 break;
             default:
                 break;
@@ -139,6 +174,29 @@ public class DataBaseActivity extends BaseActivity implements View.OnClickListen
      * 删除数据
      */
     public void deleteData() {
-        sqLiteDatabase.delete("Book", "name=?", new String[]{"haha"});
+        sqLiteDatabase.delete("Book", "name=?", new String[]{"wuwu"});
+    }
+
+    /**
+     * 查询数据
+     */
+    public List<Book> selecteAllData() {
+        List<Book> list = new ArrayList<>();
+
+        Cursor cursor = sqLiteDatabase.query("Book", null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Book book = new Book();
+                book.setAuthor(cursor.getString(cursor.getColumnIndex("author")));
+                book.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                book.setName(cursor.getString(cursor.getColumnIndex("name")));
+                book.setPages(cursor.getInt(cursor.getColumnIndex("pages")));
+                book.setPrice(cursor.getDouble(cursor.getColumnIndex("price")));
+
+                list.add(book);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
     }
 }

@@ -50,12 +50,12 @@
                 android:text="Price:" />
 
             <EditText
-                android:inputType="numberDecimal"
                 android:id="@+id/et_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="3" />
+                android:layout_weight="3"
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
 
@@ -74,10 +74,10 @@
             <EditText
                 android:id="@+id/et_pages"
                 android:layout_width="0dp"
-                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="3" />
+                android:layout_weight="3"
+                android:inputType="number" />
         </LinearLayout>
 
 
@@ -148,5 +148,30 @@
             android:layout_weight="1"
             android:text="Delete"
             android:textAllCaps="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <include layout="@layout/item_data_listview" />
+
+        <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--&gt;-->
+        <ListView
+            android:id="@+id/lv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <!--</LinearLayout>-->
+        <!--</ScrollView>-->
     </LinearLayout>
 </LinearLayout>
