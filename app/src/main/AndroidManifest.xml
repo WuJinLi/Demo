@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -75,8 +76,35 @@
             android:name=".storage.FileSaveActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".storage.LoginSuccessActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".storage.LoginSuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".notification.NotificationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".notification.FromNoAcDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".camera.CameraActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+
+        </activity>
+
+        <!--<provider-->
+            <!--android:name="android.support.v4.content.FileProvider"-->
+            <!--android:authorities="com.wjl.reviewdemo.provider"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/file_paths" />-->
+        <!--</provider>-->
     </application>
 
 </manifest>

@@ -6,9 +6,13 @@ import android.support.v7.widget.RecyclerView;
 
 import com.wjl.reviewdemo.base.BaseActivity;
 import com.wjl.reviewdemo.broadcast.BroadcastActivity;
+import com.wjl.reviewdemo.camera.CameraActivity;
 import com.wjl.reviewdemo.model.NavigateModel;
 import com.wjl.reviewdemo.multithreading.MultiThreadingActivity;
+import com.wjl.reviewdemo.notification.NotificationActivity;
 import com.wjl.reviewdemo.storage.StorageActivity;
+
+import java.net.URL;
 
 
 public class MainActivity extends BaseActivity {
@@ -38,6 +42,12 @@ public class MainActivity extends BaseActivity {
                 break;
             case 3:
                 UrlManager.startAc(this, StorageActivity.class);
+                break;
+            case 4:
+                UrlManager.startAc(this, NotificationActivity.class);
+                break;
+            case 5:
+                UrlManager.startAc(this, CameraActivity.class);
                 break;
             default:
                 break;

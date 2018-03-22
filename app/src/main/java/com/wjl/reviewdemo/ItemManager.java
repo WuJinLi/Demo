@@ -61,6 +61,8 @@ public class ItemManager {
         list.add(new NavigateModel("多线程", 1, R.mipmap.ic_launcher));
         list.add(new NavigateModel("广播", 2, R.mipmap.ic_launcher));
         list.add(new NavigateModel("持久化存储", 3, R.mipmap.ic_launcher));
+        list.add(new NavigateModel("通知", 4, R.mipmap.ic_launcher));
+        list.add(new NavigateModel("Camera", 5, R.mipmap.ic_launcher));
         return list;
     }
 
