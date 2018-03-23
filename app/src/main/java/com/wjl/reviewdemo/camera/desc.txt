@@ -1,0 +1,31 @@
+调用照相机和相册：
+
+在调用照相机之前涉及到权限（照相机权限，文件存储权限，6.0之后的动态授权），文件（文件的创建和文件的URI）
+
+动态授权：
+       检查权限是否可用（ContextCompat.checkSelfPermission），不可用则指行权限申请操作（ActivityCompat.requestPermissions），
+       在权限申请回调进行处理（onRequestPermissionsResult），如果授权成功，则打开照相机，授权失败则可以提示用户去设置权限管理界面
+       手动的开启权限；
+文件uri创建的差异：
+       Android7.0中尝试传递 file:// URI 会触发 FileUriExposedException，因为在Android7.0之后Google认为直接使用本地的根目录即
+       file:// URI是不安全的操作，直接访问会抛出FileUriExposedExCeption异常，这就意味着在Android7.0以前我们访问相机拍照存储时，
+       如果使用URI的方式直接存储剪裁图片就会造成这个异常，那么如何解决这个问题呢
+       Google为我们提供了FileProvider类，进行一种特殊的内容提供，FileProvider时ContentProvide的子类，它使用了和内容提供器类似的
+       机制来对数据进行保护，可以选择性地将封装过的Uri共享给外部，从而提高了应用的安全性。下面就让我们看一下如何使用这个内容提供者进行
+       数据访问的：使用FileProvider获取Uri就会将以前的file:// URI准换成content:// URI，实现一种安全的应用间数据访问，内容提供者作
+       为Android的四大组件之一，使用同样需要在清单文件AndroidManifest.xml中进行注册的；
+
+       在低于7.0，使用方法FromFile()方法来获取uri，将File对象转换成uri对象
+       在高于7.0包括7.0，则调用系统提供的FileProvoider的getUriForFile()来将File对象转换成URI对象，getUriForFile()接受三个参数，第一个
+       Context是上下文对象，第二个参数是指定的字符串，第三个参数是File对象，在使用FileProvoider使用需要在配置清单文件中进行注册，且在
+       代码中authority对应之值与配置清单中authority的值保持一致；
+异常错误:
+        android.os.FileUriExposedException: file:///storage/emulated/0/camera/photo.jpg
+        exposed beyond app through ClipData.Item.getUri()
+
+        java.lang.SecurityException:
+        Permission Denial: reading android.support.v4.content.FileProvider
+
+        java.lang.SecurityException:
+        Permission Denial: writing android.support.v4.content.FileProvider
+
