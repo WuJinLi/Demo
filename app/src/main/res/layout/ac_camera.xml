@@ -12,6 +12,13 @@
         android:text="start camera"
         android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/btn_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="take phote"
+        android:textAllCaps="false" />
+
 
     <ImageView
         android:id="@+id/iv_photo"
