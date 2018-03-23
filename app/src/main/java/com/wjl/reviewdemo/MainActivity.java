@@ -8,6 +8,7 @@ import com.wjl.reviewdemo.base.BaseActivity;
 import com.wjl.reviewdemo.broadcast.BroadcastActivity;
 import com.wjl.reviewdemo.camera.CameraActivity;
 import com.wjl.reviewdemo.model.NavigateModel;
+import com.wjl.reviewdemo.multimedia.MultiMediaActivity;
 import com.wjl.reviewdemo.multithreading.MultiThreadingActivity;
 import com.wjl.reviewdemo.notification.NotificationActivity;
 import com.wjl.reviewdemo.storage.StorageActivity;
@@ -48,6 +49,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case 5:
                 UrlManager.startAc(this, CameraActivity.class);
+                break;
+            case 6:
+                UrlManager.startAc(this, MultiMediaActivity.class);
                 break;
             default:
                 break;

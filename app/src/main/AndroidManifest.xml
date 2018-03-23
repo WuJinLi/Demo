@@ -105,6 +105,14 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+
+        <activity android:name=".multimedia.MultiMediaActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".multimedia.VoiceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".multimedia.VideoActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
