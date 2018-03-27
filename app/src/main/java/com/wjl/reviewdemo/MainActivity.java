@@ -12,6 +12,7 @@ import com.wjl.reviewdemo.multimedia.MultiMediaActivity;
 import com.wjl.reviewdemo.multithreading.MultiThreadingActivity;
 import com.wjl.reviewdemo.network.NetWorkActivity;
 import com.wjl.reviewdemo.notification.NotificationActivity;
+import com.wjl.reviewdemo.service.ServiceActivity;
 import com.wjl.reviewdemo.storage.StorageActivity;
 
 import java.net.URL;
@@ -56,6 +57,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case 7:
                 UrlManager.startAc(this, NetWorkActivity.class);
+                break;
+            case 8:
+                UrlManager.startAc(this, ServiceActivity.class);
                 break;
             default:
                 break;

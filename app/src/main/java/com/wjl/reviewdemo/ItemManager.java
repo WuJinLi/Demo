@@ -65,6 +65,7 @@ public class ItemManager {
         list.add(new NavigateModel("Camera", 5, R.mipmap.ic_launcher));
         list.add(new NavigateModel("Media", 6, R.mipmap.ic_launcher));
         list.add(new NavigateModel("NetWork", 7, R.mipmap.ic_launcher));
+        list.add(new NavigateModel("服务", 8, R.mipmap.ic_launcher));
         return list;
     }
 

@@ -22,32 +22,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".multithreading.handler.HandlerActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".multithreading.runnable.RunnableActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".multithreading.asynctask.AsyncTaskActivity"
             android:screenOrientation="portrait" />
-
-
         <activity
             android:name=".multithreading.handlerthread.HandlerThreadActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".web.WebDetailActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".multithreading.MultiThreadingActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".broadcast.BroadcastActivity"
             android:screenOrientation="portrait" />
@@ -56,16 +48,15 @@
             android:name=".broadcast.NetChangedReceicer"
             android:enabled="true">
             <intent-filter>
-                <!--<action android:name="android.NET.conn.CONNECTIVITY_CHANGE" />-->
+
+                <!-- <action android:name="android.NET.conn.CONNECTIVITY_CHANGE" /> -->
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
-
         <activity
             android:name=".storage.StorageActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".storage.DataBaseActivity"
             android:screenOrientation="portrait" />
@@ -75,25 +66,21 @@
         <activity
             android:name=".storage.FileSaveActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".storage.LoginSuccessActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".notification.NotificationActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".notification.FromNoAcDetailActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".camera.CameraActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
-
         </activity>
 
         <provider
@@ -106,22 +93,38 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <activity
+            android:name=".multimedia.MultiMediaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".multimedia.VoiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".multimedia.VideoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".network.HttpConnectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".network.NetWorkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".network.OkhttpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".service.ServiceActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".multimedia.MultiMediaActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".multimedia.VoiceActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".multimedia.VideoActivity"
-            android:screenOrientation="portrait"/>
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.BindService"
+            android:enabled="true"
+            android:exported="true"></service>
 
-
-
-        <activity android:name=".network.HttpConnectionActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".network.NetWorkActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".network.OkhttpActivity"
-            android:screenOrientation="portrait"/>
+        <service android:name=".service.MyIntentService"></service>
     </application>
 
 </manifest>
