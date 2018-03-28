@@ -3,82 +3,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="startService方法"
-        android:textColor="@android:color/holo_orange_light" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="startService方法"
+                android:textColor="@android:color/holo_orange_light" />
 
-    <Button
-        android:id="@+id/btn_start_service"
-        style="@style/button_style"
-        android:text="startservice" />
+            <Button
+                android:id="@+id/btn_start_service"
+                style="@style/button_style"
+                android:text="startservice" />
 
-    <Button
-        android:id="@+id/btn_stop_service"
-        style="@style/button_style"
-        android:text="stopservice" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="bindService方法"
-        android:textColor="@android:color/holo_orange_light" />
+            <Button
+                android:id="@+id/btn_stop_service"
+                style="@style/button_style"
+                android:text="stopservice" />
 
 
-    <Button
-        android:id="@+id/btn_bind_service"
-        style="@style/button_style"
-        android:text="bindservice" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="bindService方法"
+                android:textColor="@android:color/holo_orange_light" />
 
-    <Button
-        android:id="@+id/btn_unbind_service"
-        style="@style/button_style"
-        android:text="unbindservice" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="IntentService"
-        android:textColor="@android:color/holo_orange_light" />
+            <Button
+                android:id="@+id/btn_bind_service"
+                style="@style/button_style"
+                android:text="bindservice" />
 
-    <Button
-        android:id="@+id/btn_intent_service"
-        style="@style/button_style"
-        android:text="intentservice" />
+            <Button
+                android:id="@+id/btn_unbind_service"
+                style="@style/button_style"
+                android:text="unbindservice" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="DownLoadDemo"
-        android:textColor="@android:color/holo_orange_light" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="IntentService"
+                android:textColor="@android:color/holo_orange_light" />
 
-    <Button
-        android:id="@+id/btn_start_down"
-        style="@style/button_style"
-        android:text="intentservice" />
+            <Button
+                android:id="@+id/btn_intent_service"
+                style="@style/button_style"
+                android:text="intentservice" />
 
-    <Button
-        android:id="@+id/btn_pause_down"
-        style="@style/button_style"
-        android:text="intentservice" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="DownLoadDemo"
+                android:textColor="@android:color/holo_orange_light" />
 
-    <Button
-        android:id="@+id/btn_cancle_down"
-        style="@style/button_style"
-        android:text="intentservice" />
+            <Button
+                android:id="@+id/btn_start_down"
+                style="@style/button_style"
+                android:text="start_down" />
 
+            <Button
+                android:id="@+id/btn_pause_down"
+                style="@style/button_style"
+                android:text="pause_down" />
+
+            <Button
+                android:id="@+id/btn_cancle_down"
+                style="@style/button_style"
+                android:text="cancle_down" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

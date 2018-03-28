@@ -1,17 +1,23 @@
 package com.wjl.reviewdemo.service;
 
+import android.Manifest;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.wjl.reviewdemo.R;
 import com.wjl.reviewdemo.base.BaseActivity;
+import com.wjl.reviewdemo.camera.ToastUtils;
 
 /**
  * author: WuJinLi
@@ -22,7 +28,7 @@ import com.wjl.reviewdemo.base.BaseActivity;
 public class ServiceActivity extends BaseActivity implements View.OnClickListener {
     Button btn_start_service, btn_stop_service, btn_bind_service, btn_unbind_service, btn_intent_service, btn_start_down, btn_pause_down, btn_cancle_down;
     BindService.MyBinder myBinder;
-    static final String DOWNLOADURL = "";
+    static final String DOWNLOADURL = "https://raw.githubusercontent.com/guolindev/eclipse/master/eclipse-inst-win64.exe";
 
     DownLoadService.DownLoadBinder downLoadBinder;
 
@@ -47,6 +53,27 @@ public class ServiceActivity extends BaseActivity implements View.OnClickListene
         btn_start_down.setOnClickListener(this);
         btn_pause_down.setOnClickListener(this);
         btn_cancle_down.setOnClickListener(this);
+
+
+        Intent intent = new Intent(ServiceActivity.this, DownLoadService.class);
+        bindService(intent, downConn, BIND_AUTO_CREATE);
+
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 0) {
+            if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                ToastUtils.show(this, "拒绝授权", 0);
+                finish();
+            }
+        }
     }
 
     @Override
@@ -74,10 +101,13 @@ public class ServiceActivity extends BaseActivity implements View.OnClickListene
                 break;
 
             case R.id.btn_start_down:
+                downLoadBinder.startDownload(DOWNLOADURL);
                 break;
             case R.id.btn_pause_down:
+                downLoadBinder.downLoadPause();
                 break;
             case R.id.btn_cancle_down:
+                downLoadBinder.cancleDownLoad();
                 break;
             default:
                 break;
@@ -104,7 +134,7 @@ public class ServiceActivity extends BaseActivity implements View.OnClickListene
     ServiceConnection downConn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            downLoadBinder= (DownLoadService.DownLoadBinder) service;
+            downLoadBinder = (DownLoadService.DownLoadBinder) service;
         }
 
         @Override
@@ -112,6 +142,14 @@ public class ServiceActivity extends BaseActivity implements View.OnClickListene
 
         }
     };
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(serviceConnection);
+        unbindService(downConn);
+    }
 }
 
 

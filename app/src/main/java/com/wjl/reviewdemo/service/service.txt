@@ -1,0 +1,31 @@
+服务：service
+
+服务：android的四大组件之一，是一个没有界面的活动：
+
+服务的使用和创建：
+  创建：  a.创建类继承Service，实现oncreat() onStartCommand(),onBind(),onDestory() 方法；
+         b.创建服务完成后需要在项目的配置清单文件对service进行注册
+  service的启动：
+        a.startService方式来启动服务：
+           1.创建服务继承Service，并进行注册清淡文件的注册；
+           2.在活动中使用startservice(intent)来启动服务，使用stopService(intent)或者stopSelf()方法来停止服务
+
+        在使用startService方法启动服务，service的生命周期onCreate(),onStartCommand(),onDestory();
+        但是在服务启动之时会执行的生命周期：onCreate()--onStartCommand()--onDestory()
+        在服务已经启动的情况下：再次启动服务的生命周期：onStartCommand()方法会多次执行，onreate（）和onDesory()只会执行一次
+        onCreate()只负责service的创建工作，只要服务没有被销毁的情况下，onCreate()只调用一次，onDestory()只负责service的
+        销毁，
+
+        b.bindSercice方法来启动服务：
+           1.创建服务继承Service，并进行注册清单文件注册；
+           2.在服务中重写方法onCreate(),onBind(),onDestory()方法；
+           3.创建内部类MyBinder继承Binder，实现服务需要实现的逻辑；
+           4.在服务中初始化MyBinder；
+           5.在服务onBind()方法返回MyBinder对象
+           6.在活动化中声明MyBinder对象，初始化ServiceConnection对象并且重写两个方法onServiceConnected(),onServiceDisconnected();
+           7.在onServiceConnected()方法中初始化MyBinder对象，在onServiceDisconnected()方法中进行资源的释放和内存回收的操作，
+           8.启动服务使用bindService(intent,serviceconnection,flag)方法
+           9.停止服务使用unBindService(serviceconnention)方法
+由于系统默认的服务时运行在主线程，在服务中进行耗时操作时容易anr，则解决方法有两种：
+    1.耗时操作放在子线程中进行；
+    2.使用系统提供的IntentService，耗时操作结束后自动结束服务，这样大大解决了创建线程和关闭服务的操作；

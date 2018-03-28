@@ -125,6 +125,7 @@
             android:exported="true"></service>
 
         <service android:name=".service.MyIntentService"></service>
+        <service android:name=".service.DownLoadService"></service>
     </application>
 
 </manifest>

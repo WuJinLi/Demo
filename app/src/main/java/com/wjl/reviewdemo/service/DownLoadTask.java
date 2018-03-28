@@ -54,7 +54,7 @@ public class DownLoadTask extends AsyncTask<String, Integer, Integer> {
             String downloadurl = strings[0];
             //初始化文件（文件的路径）
             String fileName = downloadurl.substring(downloadurl.lastIndexOf("/"));
-            String dirctory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath();
+            String dirctory = Environment.getExternalStorageDirectory().getPath();
             file = new File(dirctory + fileName);
 
             if (file.exists()) {
@@ -87,24 +87,24 @@ public class DownLoadTask extends AsyncTask<String, Integer, Integer> {
 
                 byte[] bytes = new byte[1024];
                 int len;
-                int total;
+                int total=0;
                 while ((len = is.read(bytes)) != -1) {
                     if (isCancled) {
                         return TYPE_CANCLED;
                     } else if (isPaused) {
                         return TYPE_PAUSED;
                     } else {
-                        total = +len;
-                        saveFile.write(bytes, 0, total);
+                        total += len;
+                        saveFile.write(bytes, 0, len);
 
                         //计算下载百分比:下载数/下载内容总长度
-                        int progress = (int) ((total + downloadLength) * 100 / contentLength);
+                        int progress = (int) ((total + downloadLength)/contentLength);
                         publishProgress(progress);
                     }
                 }
+                response.close();
+                return TYPE_SUCCESS;
             }
-            response.close();
-            return TYPE_SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -129,7 +129,6 @@ public class DownLoadTask extends AsyncTask<String, Integer, Integer> {
                 file.delete();
             }
         }
-
         return TYPE_FAILED;
     }
 
