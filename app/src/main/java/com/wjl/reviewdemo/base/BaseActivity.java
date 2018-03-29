@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.wjl.reviewdemo.R;
 import com.wjl.reviewdemo.broadcast.ForceOfflineReceiver;
 
+
 /**
  * author: WuJinLi
  * time  : 18/3/14
@@ -41,9 +42,9 @@ public class BaseActivity extends AppCompatActivity implements IBaseView {
     @Override
     protected void onPause() {
         super.onPause();
-        if (receiver!=null){
+        if (receiver != null) {
             unregisterReceiver(receiver);
-            receiver=null;
+            receiver = null;
         }
     }
 

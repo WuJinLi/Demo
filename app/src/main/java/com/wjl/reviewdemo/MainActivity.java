@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
+import com.wjl.reviewdemo.baidulocation.BaiduMapActivity;
 import com.wjl.reviewdemo.base.BaseActivity;
 import com.wjl.reviewdemo.broadcast.BroadcastActivity;
 import com.wjl.reviewdemo.camera.CameraActivity;
@@ -60,6 +61,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case 8:
                 UrlManager.startAc(this, ServiceActivity.class);
+                break;
+            case 9:
+                UrlManager.startAc(this, BaiduMapActivity.class);
                 break;
             default:
                 break;

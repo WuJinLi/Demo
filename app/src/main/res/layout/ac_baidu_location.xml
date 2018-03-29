@@ -5,6 +5,12 @@
     android:orientation="vertical">
 
 
+    <Button
+        android:id="@+id/btn_get_location"
+        style="@style/button_style"
+        android:layout_marginBottom="10dp"
+        android:text="getLocation" />
+
     <TextView
         android:id="@+id/tv_show_location"
         android:layout_width="match_parent"
